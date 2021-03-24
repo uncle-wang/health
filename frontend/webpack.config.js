@@ -4,7 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-const PRODUCTION = process.env.NODE_ENV === 'production';
+const NODE_ENV = process.env.NODE_ENV;
+const PRODUCTION = NODE_ENV === 'production';
 
 const options = {
     mode: PRODUCTION ? 'production' : 'development',
@@ -31,8 +32,16 @@ const options = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'less-loader',
                     'postcss-loader',
+                    {
+                        loader: 'px2rem-loader',
+                        // options here
+                        options: {
+                            remUnit: 46.875,
+                            remPrecision: 8
+                        }
+                    },
+                    'less-loader',
                 ]
             },
             {
@@ -63,7 +72,7 @@ const options = {
     },
 };
 
-if (PRODUCTION) {
+if (NODE_ENV === 'development') {
     options.devServer = {
         hot: true,
         host: '0.0.0.0',

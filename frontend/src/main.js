@@ -1,2 +1,2 @@
 import './main.less';
-console.log('haha');
+console.log('aa');
