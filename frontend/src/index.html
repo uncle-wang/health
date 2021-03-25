@@ -5,13 +5,27 @@
     <title>HIV艾滋病自检健康包</title>
     <script type="text/javascript">
         (function() {
-            var width = window.screen.availWidth;
+            var width = window.screen.availWidth * window.devicePixelRatio;
             var dpr = 1 / window.devicePixelRatio;
             document.querySelector('meta[name="viewport"]').content = 'width='+width+',initial-scale='+dpr+',maximum-scale='+dpr+',user-scalable=0';
+            document.documentElement.style.fontSize = width / 10 + 'px';
         })();
     </script>
 </head>
 <body>
-    哈哈
+    <header>HIV艾滋病自检健康包</header>
+    <div class="comments">匿名用户：赞一个，活动很赞！</div>
+    <ul class="cards">
+        <li class="card card-a">
+            <h3 class="tes-text">点击测试可免费领HIV检测健康包</h3>
+            <button id="start" type="button" class="btn">开始测试</button>
+        </li>
+        <li class="card card-b">
+            <p class="test-paper">人类免疫缺陷病毒1型尿液抗体检测试剂盒是使用胶体金免疫层析科技研发的新型检测试剂，可检测尿液中HIV-1抗体。检测时间为六周（42天）后，所有操作时间为15-20分钟，动作简便、迅速、准确、自带质控对照、无需借助其他设备，适用于HIV感染的辅助诊断</p>
+        </li>
+        <li class="card card-c">
+            <p class="science">艾滋病是一种危害严重的传染病，病死率高，尚不能彻底治愈。艾滋病需要终生服药，给家庭和个人造成严重负担。</p>
+        </li>
+    </ul>
 </body>
 </html>

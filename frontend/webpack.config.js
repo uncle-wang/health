@@ -33,14 +33,7 @@ const options = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    {
-                        loader: 'px2rem-loader',
-                        // options here
-                        options: {
-                            remUnit: 46.875,
-                            remPrecision: 8
-                        }
-                    },
+                    'px2rem-loader',
                     'less-loader',
                 ]
             },
