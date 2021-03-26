@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development webpack serve --config frontend/webpack.config.js",
     "build:test": "NODE_ENV=test webpack --config frontend/webpack.config.js",
     "build": "NODE_ENV=production webpack --config frontend/webpack.config.js"
@@ -28,7 +27,8 @@
     "px2rem-loader": "^0.1.9",
     "webpack": "^5.27.2",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "zepto-webpack": "^1.2.1"
   },
   "description": ""
 }

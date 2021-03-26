@@ -1,31 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport">
-    <title>HIV艾滋病自检健康包</title>
-    <script type="text/javascript">
-        (function() {
-            var width = window.screen.availWidth * window.devicePixelRatio;
-            var dpr = 1 / window.devicePixelRatio;
-            document.querySelector('meta[name="viewport"]').content = 'width='+width+',initial-scale='+dpr+',maximum-scale='+dpr+',user-scalable=0';
-            document.documentElement.style.fontSize = width / 10 + 'px';
-        })();
-    </script>
+  <meta name="viewport">
+  <title>HIV艾滋病自检健康包</title>
+  <script type="text/javascript">
+    (function() {
+      var width = window.screen.availWidth * window.devicePixelRatio;
+      var dpr = 1 / window.devicePixelRatio;
+      document.querySelector('meta[name="viewport"]').content = 'width='+width+',initial-scale='+dpr+',maximum-scale='+dpr+',user-scalable=0';
+      document.documentElement.style.fontSize = width / 10 + 'px';
+    })();
+  </script>
 </head>
 <body>
-    <header>HIV艾滋病自检健康包</header>
-    <div class="comments">匿名用户：赞一个，活动很赞！</div>
-    <ul class="cards">
-        <li class="card card-a">
-            <h3 class="tes-text">点击测试可免费领HIV检测健康包</h3>
-            <button id="start" type="button" class="btn">开始测试</button>
-        </li>
-        <li class="card card-b">
-            <p class="test-paper">人类免疫缺陷病毒1型尿液抗体检测试剂盒是使用胶体金免疫层析科技研发的新型检测试剂，可检测尿液中HIV-1抗体。检测时间为六周（42天）后，所有操作时间为15-20分钟，动作简便、迅速、准确、自带质控对照、无需借助其他设备，适用于HIV感染的辅助诊断</p>
-        </li>
-        <li class="card card-c">
-            <p class="science">艾滋病是一种危害严重的传染病，病死率高，尚不能彻底治愈。艾滋病需要终生服药，给家庭和个人造成严重负担。</p>
-        </li>
-    </ul>
+  <header>HIV艾滋病自检健康包</header>
+  <div class="comments">匿名用户：赞一个，活动很赞！</div>
+  <ul class="cards">
+    <li class="card card-a">
+      <div class="start-wrap">
+        <h3 class="tes-text">点击测试可免费领HIV检测健康包</h3>
+        <button id="start" type="button" class="btn">开始测试</button>
+      </div>
+      <div class="qst-wrap"></div>
+      <div class="res-wrap success">
+        <p class="res-title">检测结果：合格</p>
+        <p class="res-text">你很健康</p>
+        <p class="res-desc">手牵手同系红丝带，心连心共防艾滋病</p>
+      </div>
+      <div class="res-wrap fail">
+        <p class="res-title">检测结果：不合格</p>
+        <p class="res-text">需要进一步检测</p>
+        <button id="receive" type="button" class="btn">免费领取自测盒</button>
+      </div>
+    </li>
+    <li class="card card-b">
+      <p class="test-paper">人类免疫缺陷病毒1型尿液抗体检测试剂盒是使用胶体金免疫层析科技研发的新型检测试剂，可检测尿液中HIV-1抗体。检测时间为六周（42天）后，所有操作时间为15-20分钟，动作简便、迅速、准确、自带质控对照、无需借助其他设备，适用于HIV感染的辅助诊断</p>
+    </li>
+    <li class="card card-c">
+      <p class="science">艾滋病是一种危害严重的传染病，病死率高，尚不能彻底治愈。艾滋病需要终生服药，给家庭和个人造成严重负担。</p>
+    </li>
+  </ul>
+  <div class="form-wrap">
+    <div class="form-box">
+      <div class="close-wrap">
+        <button id="close" type="button"></button>
+      </div>
+      <div class="form-header"></div>
+      <div class="form-body">
+        <form id="info_form">
+          <input class="info-input" type="text" name="province" placeholder="您所在的省市">
+          <input class="info-input" type="text" name="address" placeholder="详细街道及收货地址">
+          <input class="info-input" type="text" name="username" placeholder="收件人姓名">
+          <input class="info-input" type="text" name="phoneno" placeholder="收件人电话">
+          <button type="submit" class="btn light info-submit">提交</button>
+        </form>
+        <div class="res-wrap success">
+          <p class="res-title">提交成功</p>
+          <p class="res-text">我们会第一时间派送</p>
+          <p class="res-desc">关注公众号 盛大多少啊 或到当地防疫部门领取</p>
+        </div>
+        <div class="res-wrap fail">
+          <p class="res-title">本月配额已送完</p>
+          <p class="res-text">每月提供100份测试盒</p>
+          <p class="res-desc">关注公众号 盛大多少啊 或到当地防疫部门领取</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

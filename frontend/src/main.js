@@ -1,2 +1,64 @@
 import './main.less';
-console.log('aa');
+import $ from 'zepto-webpack';
+import qstList from './questions.json';
+console.log('56789');
+let score = 0, processIndex = 0;
+
+function turnToStart() {
+  $('.start-wrap').hide();
+  $('.qst-wrap').show();
+  renderQuestion();
+}
+
+function turnToEnd() {
+  $('.qst-wrap').hide();
+  if (score < 10) {
+    $('.card-a .res-wrap.success').css('display', 'flex');
+  }
+  else {
+    $('.card-a .res-wrap.fail').css('display', 'flex');
+  }
+}
+
+function turnToNext() {
+  const optIndex = $(this).parents('.qst-opt').index();
+  const qst = qstList[processIndex];
+  const opt = qst.options[optIndex];
+  $('.qst-opt button').attr('disabled', 'disabled');
+  $(this).addClass('selected');
+  // 计分
+  if (opt.value) score += opt.value;
+  // 判断是否结束
+  if (opt.end) return turnToEnd();
+  processIndex += opt.pass || qst.pass || 1;
+  if (!qstList[processIndex]) return turnToEnd();
+  setTimeout(renderQuestion, 500);
+}
+
+function renderQuestion() {
+  const qst = qstList[processIndex];
+  const $item = $(`<div class="qst-item">
+    <p class="qst-title">${qst.title}</p>
+    <ul class="qst-options"></ul>
+  </div>`);
+  const $options = $item.find('.qst-options');
+  for (let i = 0; i < qst.options.length; i ++) {
+    const opt = qst.options[i];
+    const $opt = $(`<li class="qst-opt"><button type="button">${opt.label}</button></li>`);
+    $options.append($opt);
+  }
+  $('.qst-wrap').html($item);
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  $('#info_form').hide();
+  $('.form-wrap .res-wrap.fail').css('display', 'flex');
+}
+
+$('#start').click(turnToStart);
+$('#receive').click(function() {$('.form-wrap').css('display', 'flex')});
+$('#close, .form-wrap').click(function() {$('.form-wrap').hide()});
+$('.form-box').click(function(e) {e.stopPropagation()});
+$('.qst-wrap').delegate('button', 'click', turnToNext);
+$('#info_form').submit(submitForm);

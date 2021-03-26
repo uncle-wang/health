@@ -1,118 +1,299 @@
 @base: #3C5FFF;
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 button {
-    outline: none;
-    background: none;
-    border: none;
+  outline: none;
+  background: none;
+  border: none;
 }
 .btn {
-    height: 100px;
-    border-radius: 50px;
-    background-color: @base;
-    font-family: PingFangSC-Medium;
-    font-size: 30px;
-    color: #FFFFFF;
-    font-weight: 500;
-    display: block;
-    width: 100%;
-    &.light {
-        font-family: PingFangSC-Regular;
-        font-weight: 400;
-    }
+  height: 100px;
+  border-radius: 50px;
+  background-color: @base;
+  font-family: PingFangSC-Medium;
+  font-size: 30px;
+  color: #FFFFFF;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  &.light {
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+  }
 }
 body {
-    background-color: @base;
-    background-image: url(./images/bg1.png);
-    background-position: center 122px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    padding-bottom: 130px;
+  background-color: @base;
+  background-image: url(./images/bg1.png);
+  background-position: center 122px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 130px;
 }
 header {
-    height: 72px;
+  height: 72px;
+  font-family: PingFangSC-Medium;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 72px;
+  text-align: center;
+  background-color: #EDEDED;
+}
+.comments {
+  height: 50px;
+  line-height: 50px;
+  background-color: #C1CBFF;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 24px;
+  color: @base;
+  font-weight: 400;
+}
+.cards {
+  margin-top: 245px;
+  padding: 0 25px;
+}
+.card {
+  background-color: #FFF;
+  border-radius: 40px;
+  padding-top: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-repeat: no-repeat;
+  background-size: 500px 80px;
+  background-position: top;
+  & + .card {
+    margin-top: 20px;
+  }
+  &.card-a {
+    background-size: 500px 80px, 270px 270px;
+    background-position: top, left top;
+    background-image: url(./images/card_a.png), url(./images/safe.png);
+    padding-top: 130px;
+    padding-bottom: 0;
+  }
+  &.card-b {
+    background-image: url(./images/card_b.png);
+    padding-bottom: 40px;
+  }
+  &.card-c {
+    background-image: url(./images/card_c.png);
+    padding-bottom: 30px;
+  }
+}
+.start-wrap {
+  padding-bottom: 50px;
+}
+.tes-text {
+  height: 48px;
+  font-family: PingFangSC-Medium;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: center;
+}
+#start {
+  margin-top: 50px;
+}
+.qst-wrap {
+  display: none;
+  padding-bottom: 50px;
+}
+.qst-list {
+  display: none;
+}
+.qst-title {
+  line-height: 48px;
+  font-family: PingFangSC-Medium;
+  font-size: 34px;
+  font-weight: 500;
+}
+.qst-options {
+  padding-top: 30px;
+  margin: 0 -10px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.qst-opt {
+  width: 300px;
+  height: 100px;
+  flex: 0 0 300px;
+  margin-top: 20px;
+  button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    border: 2px solid #EEE;
+    border-radius: 50px;
+    box-sizing: border-box;
     font-family: PingFangSC-Medium;
     font-size: 30px;
     font-weight: 500;
-    line-height: 72px;
-    text-align: center;
-    background-color: #EDEDED;
-}
-.comments {
-    height: 50px;
-    line-height: 50px;
-    background-color: #C1CBFF;
-    text-align: center;
-    font-family: PingFangSC-Regular;
-    font-size: 24px;
-    color: @base;
-    font-weight: 400;
-}
-.cards {
-    margin-top: 245px;
-    padding: 0 25px;
-}
-.card {
-    background-color: #FFF;
-    border-radius: 40px;
-    padding-top: 100px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-repeat: no-repeat;
-    background-size: 500px 80px;
-    background-position: top;
-    & + .card {
-        margin-top: 20px;
+    &.selected {
+      border: none;
+      background-color: @base;
+      color: #FFF;
     }
-    &.card-a {
-        background-size: 500px 80px, 270px 270px;
-        background-position: top, left top;
-        background-image: url(./images/card_a.png), url(./images/safe.png);
-        padding-top: 130px;
-        padding-bottom: 50px;
-    }
-    &.card-b {
-        background-image: url(./images/card_b.png);
-        padding-bottom: 40px;
-    }
-    &.card-c {
-        background-image: url(./images/card_c.png);
-        padding-bottom: 30px;
-    }
+  }
 }
-.tes-text {
-    height: 48px;
-    font-family: PingFangSC-Medium;
-    font-size: 34px;
-    font-weight: 500;
-    line-height: 48px;
-    text-align: center;
+.res-wrap {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  &.success {
+    padding-bottom: 44px;
+    .res-title {
+      color: #1EBC59;
+      background-image: url(./images/icon_success.png);
+    }
+    .res-text {
+      margin-top: 10px;
+    }
+  }
+  &.fail {
+    padding-bottom: 50px;
+    .res-text {
+      margin-top: 20px;
+    }
+    .res-title {
+      color: #D62734;
+      background-image: url(./images/icon_fail.png);
+    }
+  }
 }
-#start {
-    margin-top: 50px;
+.res-title {
+  padding-left: 42px;
+  height: 50px;
+  line-height: 50px;
+  font-family: PingFangSC-Medium;
+  font-size: 36px;
+  font-weight: 500;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  background-position: left;
+}
+.res-text {
+  line-height: 40px;
+  font-family: PingFangSC-Regular;
+  font-size: 28px;
+  font-weight: 400;
+}
+.res-desc {
+  line-height: 36px;
+  font-family: PingFangSC-Regular;
+  font-size: 24px;
+  color: #BBB;
+  font-weight: 400;
+  margin-top: 50px;
+}
+#receive {
+  margin-top: 40px;
 }
 .test-paper {
-    font-family: PingFangSC-Regular;
-    font-size: 24px;
-    color: #666666;
-    line-height: 36px;
-    font-weight: 400;
+  font-family: PingFangSC-Regular;
+  font-size: 24px;
+  color: #666666;
+  line-height: 36px;
+  font-weight: 400;
 }
 .science {
-    height: 320px;
-    padding: 0 30px;
-    line-height: 45px;
-    font-family: PingFangSC-Semibold;
-    font-size: 32px;
-    color: #FFFFFF;
-    font-weight: 600;
-    background-image: url(./images/science.png);
-    background-size: 100%;
-    display: flex;
-    align-items: center;
+  height: 320px;
+  padding: 0 30px;
+  line-height: 45px;
+  font-family: PingFangSC-Semibold;
+  font-size: 32px;
+  color: #FFFFFF;
+  font-weight: 600;
+  background-image: url(./images/science.png);
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+}
+.form-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.form-box {
+  width: 630px;
+}
+.close-wrap {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 3;
+}
+#close {
+  width: 30px;
+  height: 30px;
+  background-image: url(./images/close.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.form-header {
+  height: 240px;
+  background-image: url(./images/form_header.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+}
+.form-body {
+  background-color: #FFF;
+  border-radius: 20px;
+  padding: 160px 50px 50px;
+  margin-top: -160px;
+  .res-wrap {
+    margin-top: 50px;
+    padding-bottom: 0;
+    .res-text {
+      margin-top: 10px;
+    }
+  }
+}
+#info_form {
+  margin-top: 30px;
+}
+.info-input {
+  height: 100px;
+  font-family: PingFangSC-Regular;
+  font-size: 26px;
+  font-weight: 400;
+  background-color: #F6F6F6;
+  border-radius: 50px;
+  padding: 0 50px;
+  border: 1px solid #F6F6F6;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  &.error {
+    border-color: red;
+  }
+  & + .info-input {
+    margin-top: 20px;
+  }
+  &::placeholder {
+    color: #BBB;
+  }
+}
+.info-submit {
+  margin-top: 30px;
 }
