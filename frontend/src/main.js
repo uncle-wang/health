@@ -1,7 +1,7 @@
 import './main.less';
 import $ from 'zepto-webpack';
 import qstList from './questions.json';
-console.log('56789');
+
 let score = 0, processIndex = 0;
 
 function turnToStart() {
@@ -52,8 +52,31 @@ function renderQuestion() {
 
 function submitForm(e) {
   e.preventDefault();
+  if (!checkFormValid()) return;
   $('#info_form').hide();
   $('.form-wrap .res-wrap.fail').css('display', 'flex');
+}
+
+function checkFormValid() {
+  const $inputs = $('.info-input');
+  for (let i = 0; i < $inputs.length; i ++) {
+    const $input = $inputs.eq(i);
+    $input.val($input.val().trim());
+    if (!$input.val()) {
+      $input.addClass('error');
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkInput() {
+  if ($(this).val()) {
+    $(this).removeClass('error');
+  }
+  else {
+    $(this).addClass('error');
+  }
 }
 
 $('#start').click(turnToStart);
@@ -62,3 +85,4 @@ $('#close, .form-wrap').click(function() {$('.form-wrap').hide()});
 $('.form-box').click(function(e) {e.stopPropagation()});
 $('.qst-wrap').delegate('button', 'click', turnToNext);
 $('#info_form').submit(submitForm);
+$('.info-input').on('input', checkInput);
