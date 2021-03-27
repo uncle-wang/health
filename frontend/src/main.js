@@ -2,8 +2,9 @@ import './main.less';
 import $ from 'zepto-webpack';
 import qstList from './questions.json';
 import commentList from './comments.json';
+import scienceList from './sciences.json';
 
-let score = 0, processIndex = 0;
+let score = 0, processIndex = 0, scienceIndex = 0;
 
 function turnToStart() {
   $('.start-wrap').hide();
@@ -51,6 +52,12 @@ function renderQuestion() {
     $options.append($opt);
   }
   $('.qst-wrap').html($item);
+  setScienceText();
+}
+
+function setScienceText() {
+  $('.science').html(scienceList[scienceIndex]);
+  scienceIndex = (scienceIndex + 1) % scienceList.length;
 }
 
 function submitForm(e) {
@@ -99,6 +106,7 @@ function startAnimate() {
 }
 
 startAnimate();
+setScienceText();
 
 $('#start').click(turnToStart);
 $('#receive').click(function() {$('.form-wrap').css('display', 'flex')});
