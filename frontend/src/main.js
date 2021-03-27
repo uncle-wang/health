@@ -1,6 +1,7 @@
 import './main.less';
 import $ from 'zepto-webpack';
 import qstList from './questions.json';
+import commentList from './comments.json';
 
 let score = 0, processIndex = 0;
 
@@ -11,13 +12,15 @@ function turnToStart() {
 }
 
 function turnToEnd() {
-  $('.qst-wrap').hide();
-  if (score < 10) {
-    $('.card-a .res-wrap.success').css('display', 'flex');
-  }
-  else {
-    $('.card-a .res-wrap.fail').css('display', 'flex');
-  }
+  setTimeout(function() {
+    $('.qst-wrap').hide();
+    if (score < 10) {
+      $('.card-a .res-wrap.success').css('display', 'flex');
+    }
+    else {
+      $('.card-a .res-wrap.fail').css('display', 'flex');
+    }
+  }, 500);
 }
 
 function turnToNext() {
@@ -78,6 +81,24 @@ function checkInput() {
     $(this).addClass('error');
   }
 }
+
+function startAnimate() {
+  const $list = $('.comment-list');
+  for (let i = 0; i < commentList.length; i ++) {
+    const $item = $(`<li class="comment-item">${commentList[i]}</li>`);
+    $list.append($item);
+  }
+  setInterval(function() {
+    $list.addClass('trans');
+    $list.css('transform', `translateY(-0.666667rem)`);
+    setTimeout(function() {
+      $list.removeClass('trans').css('transform', `translateY(0)`);
+      $list.append($('.comment-item:first-child'));
+    }, 1500);
+  }, 3000);
+}
+
+startAnimate();
 
 $('#start').click(turnToStart);
 $('#receive').click(function() {$('.form-wrap').css('display', 'flex')});
