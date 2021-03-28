@@ -27,7 +27,8 @@ router.get('/receivers', utils.res(async function(req, res) {
   // 总条数
   const p1 = pool.query('SELECT COUNT(id) total FROM receivers');
   // 20条
-  const p2 = pool.query('SELECT phoneno,address,UNIX_TIMESTAMP(ctime)*1000 ctime FROM receivers ORDER BY ctime DESC LIMIT 20 OFFSET ?', [(page - 1) * 20]);
+  const pageSize = 15;
+  const p2 = pool.query(`SELECT phoneno,address,UNIX_TIMESTAMP(ctime)*1000 ctime FROM receivers ORDER BY ctime DESC LIMIT ${pageSize} OFFSET ?`, [(page - 1) * pageSize]);
   const [[[{total}]], [rows]] = await Promise.all([p1, p2]);
   return {total, rows};
 }));
