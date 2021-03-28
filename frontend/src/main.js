@@ -1,5 +1,6 @@
 import './main.less';
 import $ from 'zepto-webpack';
+import ajax from './utils/ajax';
 import qstList from './questions.json';
 import commentList from './comments.json';
 import scienceList from './sciences.json';
@@ -63,8 +64,33 @@ function setScienceText() {
 function submitForm(e) {
   e.preventDefault();
   if (!checkFormValid()) return;
-  $('#info_form').hide();
-  $('.form-wrap .res-wrap.fail').css('display', 'flex');
+  $('.info-submit').attr('disabled', 'disabled');
+  ajax({
+    url: '/api/submit',
+    method: 'json',
+    data: {
+      phoneno: $('.info-input[name="phoneno"]').val(),
+      address: `${$('.info-input[name="province"]').val()} ${$('.info-input[name="address"]').val()} ${$('.info-input[name="username"]').val()}`
+    }
+  }).then(res => {
+    if (res && res.code === 1000) {
+      $('#info_form').hide();
+      $('.form-wrap .res-wrap.success').css('display', 'flex');
+    }
+    else if (res && res.code === 3001) {
+      $('#info_form').hide();
+      $('.form-wrap .res-wrap.fail .res-text span').text(res.data.limit);
+      $('.form-wrap .res-wrap.fail').css('display', 'flex');
+    }
+    else {
+      $('.info-submit').removeAttr('disabled');
+      alert(res ? res.message || res : '发生未知错误，请稍后重试');
+    }
+  }).catch(err => {
+    console.error(err);
+    $('.info-submit').removeAttr('disabled');
+    alert(err ? err.message || err : '发生未知错误，请稍后重试');
+  });
 }
 
 function checkFormValid() {

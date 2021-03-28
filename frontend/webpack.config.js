@@ -74,6 +74,9 @@ if (DEVELOPMENT) {
     hot: true,
     host: '0.0.0.0',
     contentBase: path.resolve(__dirname, './dist'),
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   };
 }
 

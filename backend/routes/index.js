@@ -14,7 +14,8 @@ router.post('/submit', utils.res(async function(req, res) {
   // 最近半年相同手机号的收货信息(同一用户每六个月只能领取一次)
   const p2 = pool.query('SELECT * FROM receivers WHERE ctime > TIMESTAMPADD(MONTH,-6,CURRENT_TIMESTAMP) AND phoneno=?', [phoneno]);
   const [[[{total}]], [[receiver]]] = await Promise.all([p1, p2]);
-  if (total >= 100) return Promise.reject({code: 3001, message: '本月配额已送完'});
+  const limit = 100;
+  if (total >= limit) return Promise.reject({code: 3001, message: '本月配额已送完', data: {limit}});
   if (receiver) return Promise.reject({code: 3002, message: '对不起，同一用户每六个月只能领取一次'});
   await pool.query('INSERT INTO receivers (phoneno,address) VALUES (?,?)', [phoneno, address]);
   return;
