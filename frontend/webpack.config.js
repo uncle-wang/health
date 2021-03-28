@@ -72,6 +72,7 @@ const options = {
 if (DEVELOPMENT) {
   options.devServer = {
     hot: true,
+    port: 8082,
     host: '0.0.0.0',
     contentBase: path.resolve(__dirname, './dist'),
     proxy: {

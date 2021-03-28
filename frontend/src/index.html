@@ -6,10 +6,14 @@
   <title>HIV艾滋病自检健康包</title>
   <script type="text/javascript">
     (function() {
-      var width = window.screen.availWidth * window.devicePixelRatio;
-      var dpr = 1 / window.devicePixelRatio;
-      document.querySelector('meta[name="viewport"]').content = 'width='+width+',initial-scale='+dpr+',maximum-scale='+dpr+',user-scalable=0';
-      document.documentElement.style.fontSize = width / 10 + 'px';
+      function setRem() {
+        var width = window.screen.availWidth * window.devicePixelRatio;
+        var dpr = 1 / window.devicePixelRatio;
+        document.querySelector('meta[name="viewport"]').content = 'width='+width+',initial-scale='+dpr+',maximum-scale='+dpr+',user-scalable=0';
+        document.documentElement.style.fontSize = width / 10 + 'px';
+      }
+      setRem();
+      window.addEventListener('resize', setRem);
     })();
   </script>
 </head>
